@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MineIds - Id List</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Open Sans', sans-serif;
+      }
+      #searchInput {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+      }
+      #idTable {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        font-size: 18px;
+      }
+      #idTable th, #idTable td {
+        text-align: left;
+        padding: 12px;
+      }
+      #idTable tr {
+        border-bottom: 1px solid #ddd;
+      }
+      #idTable tr.header, #idTable tr:hover {
+        background-color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Search for IDs</h2>
+    <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for blocks/items..." title="Type a block or ID.">
+    <table id="idTable">
+      <tr class="header">
+        <th style="width:15%;">ID</th>
+        <th style="width:85%;">Name</th>
+      </tr>
+      <!-- Start the big long list -->
+      <tr><td>0</td><td>Air</td></tr>
+      <!-- End the big long list -->
+    </table>
+    <script>
+      function filterTable() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("idTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+      }
+    </script>
+  </body>
+</html>
