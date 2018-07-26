@@ -28,6 +28,10 @@
         text-align: left;
         padding: 12px;
       }
+      #idTable td small {
+        font-size: 80%;
+        color: #444;
+      }
       #idTable tr {
         border-bottom: 1px solid #ddd;
       }
@@ -45,7 +49,7 @@
         <th style="width:85%;">Name</th>
       </tr>
       <!-- Start the big long list -->
-      <tr><td>0</td><td>Air</td></tr>
+      <tr><td>0</td><td>Air <small>minecraft:air</small></td></tr>
       <!-- End the big long list -->
     </table>
     <script>
@@ -56,7 +60,7 @@
         table = document.getElementById("idTable");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[0];
+          td = tr[i].getElementsByTagName("td")[1];
           if (td) {
             if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
               tr[i].style.display = "";
